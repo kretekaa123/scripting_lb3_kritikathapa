@@ -1,0 +1,3 @@
+BCA stands for Bachelor of Computer Applications.
+It is a computer science degree program.
+It covers programming, database, web development and software development.

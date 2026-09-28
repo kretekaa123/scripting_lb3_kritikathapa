@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("#form").submit(function(e){
+        e.preventDefault();
+
+        let name = $("#name").val();
+        let username = $("#username").val();
+        let phone = $("#phone").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let address = $("#address").val();
+        let course = $("#course").val();
+        let gender = $("input[name='gender']:checked").val();
+
+        if(!/^[A-Za-z ]+$/.test(name))
+            return alert("Invalid Name");
+
+        if(!/^\w+$/.test(username))
+            return alert("Invalid Username");
+
+        if(!/^(98|97|96)\d+$/.test(phone))
+            return alert("Invalid Phone");
+
+        if(!gender)
+            return alert("Select Gender");
+
+        if(address == "")
+            return alert("Enter Address");
+
+        if(!email.includes("@"))
+            return alert("Invalid Email");
+
+        if(!/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,}$/.test(password))
+            return alert("Invalid Password");
+
+        if(course == "")
+            return alert("Select Course");
+
+        alert("Registration Successful!");
+    });
+});
+</script>
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="form">
+    Name: <input type="text" id="name"><br><br>
+    Address: <input type="text" id="address"><br><br>
+    Username: <input type="text" id="username"><br><br>
+    Email: <input type="text" id="email"><br><br>
+    Password: <input type="password" id="password"><br><br>
+    Website: <input type="text" id="website"><br><br>
+    Phone: <input type="text" id="phone"><br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+
+    Course:
+    <select id="course">
+        <option value="">Select Course</option>
+        <option>BCA</option>
+        <option>BIM</option>
+        <option>CSIT</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>
